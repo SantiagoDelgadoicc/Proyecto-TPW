@@ -165,100 +165,28 @@
         </div>
       </div>
     </header>
-    <div class="cards">
-        <div class="cartas">
-          <div class="card1">
-            <div class="card mi-card" class="card" style="width: 17rem;" data-bs-theme="dark">
-              <img src="imagenes/Misfits_-_Walk_Among_Us_(pink_cover).jpg" class="card-img-top" alt="misfits">
-              <div class="card-body">
-                <p class="card-text">Misfits</p>
-                <a href="https://open.spotify.com/intl-es/artist/1cXi8ALPQCBHZbf0EgP4Ey" class="btn btn-outline-danger">Playlist</a>
-              </div>
-            </div>
-          </div>
-          <div class="card2">
-            <div class="card mi-card" class="card" style="width: 17rem;" data-bs-theme="dark">
-              <img src="imagenes/Nirvana-InUtero.jpg"  class="card-img-top" alt="Nirvana">
-              <div class="card-body">
-                <p class="card-text">Nirvana</p>
-                <a href="https://open.spotify.com/intl-es/artist/6olE6TJLqED3rqDCT0FyPh" class="btn btn-outline-danger">Playlist</a>
-              </div>
-            </div>
-          </div>
-          <div class="card3">
-            <div class="card mi-card" class="card" style="width: 17rem;" data-bs-theme="dark">
-              <img src="imagenes/stationtostation.webp" class="card-img-top" alt="David Bowie">
-              <div class="card-body">
-                <p class="card-text">David Bowie</p>
-                <a href="https://open.spotify.com/intl-es/artist/0oSGxfWSnnOXhD2fKuz2Gy" class="btn btn-outline-danger">Playlist</a>
-              </div>
-            </div>
-          </div>
-          <div class="card4">
-            <div class="card mi-card" class="card" style="width: 17rem;" data-bs-theme="dark">
-              <img src="imagenes/sidvicious.jfif" class="card-img-top" alt="Sid Vicious">
-              <div class="card-body">
-                <p class="card-text">Sid Vicious</p>
-                <a href="https://open.spotify.com/intl-es/artist/1YnxVTLZQkk6KJI2c5sBqU" class="btn btn-outline-danger">Playlist</a>
-              </div>
-            </div>
-          </div>
-          <div class="card5">
-            <div class="card mi-card" class="card" style="width: 17rem;" data-bs-theme="dark">
-              <img src="imagenes/sexpistolsalbum.webp" class="card-img-top" alt="Sex Pistols">
-              <div class="card-body">
-                <p class="card-text">Sex Pistols</p>
-                <a href="https://open.spotify.com/intl-es/artist/1u7kkVrr14iBvrpYnZILJR" class="btn btn-outline-danger">Playlist</a>
-              </div>
-            </div>
-          </div>
+    <div class="cartas">
+      <div class="container mt-5">
+        <div class="row justify-content-center" id="contenedor-cards">
+          <!-- Aquí se insertan las cards automáticamente -->
         </div>
       </div>
-    <div class="tabla container-fluid">
-      <h1>Ranking de Musicos</h1>
-      <table class="table w-100" data-bs-theme="dark">
+    </div>
+    <div class="tabla">
+      <table class="table table-dark table-striped text-center align-middle">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Años</th>
-            <th scope="col">Oyentes Mensuales</th>
+            <th scope="col">Año de actividad</th>
+            <th scope="col">Oyentes mensuales</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Nirvana</td>
-            <td>1987-1994</td>
-            <td>32.882.067</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>David Bowie</td>
-            <td>1962-2016</td>
-            <td>15.538.749</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Mifits</td>
-            <td>1997-Actualidad</td>
-            <td>1.841.002</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Sex Pistols</td>
-            <td>1975-1978</td>
-            <td>1.379.282</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Sid Vicious</td>
-            <td>1976-1979</td>
-            <td>53.821</td>
-          </tr>
+        <tbody id="tabla-datos">
+          <!-- Los datos del JSON se insertarán aquí -->
         </tbody>
       </table>
     </div>
+      <h1>Ranking de Musicos</h1>
     <div class="contenidogrid">
       <div class="card" data-bs-theme="dark" style="width: 90rem;">
         <div class="card-body">
@@ -277,5 +205,6 @@
     </div>
     <button id="volverarriba" onclick="volver()">Volver Arriba</button>
     <script src="maininicio.js" type="text/javascript"></script>
+    <p id="mensaje-error" style="color: red;"></p>
   </body>
 </html>

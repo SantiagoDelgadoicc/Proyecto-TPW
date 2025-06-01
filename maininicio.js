@@ -101,3 +101,79 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// ======================
+// CONFIGURACIÓN SPOTIFY
+// ======================
+const clientId = 'cfd9931c98d0476aaf63ae8c3b259099';
+const clientSecret = 'd559fb37c39e4d3dad2bfe0470643e36';
+
+// ======================
+// FUNCIÓN PARA OBTENER TOKEN
+// ======================
+async function obtenerTokenSpotify() {
+  const credenciales = btoa(`${clientId}:${clientSecret}`);
+
+  try {
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': `Basic ${credenciales}`
+      },
+      body: 'grant_type=client_credentials'
+    });
+
+    const data = await response.json();
+    return data.access_token;
+  } catch (error) {
+    console.error('Error al obtener token de Spotify:', error);
+    return null;
+  }
+}
+
+// ======================
+// MOSTRAR TRACKS EN EL DOM
+// ======================
+function mostrarTracks(tracks) {
+  const contenedor = document.getElementById("contenedor-cards");
+  contenedor.innerHTML = "";
+
+  tracks.forEach(track => {
+    const card = document.createElement("div");
+    card.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex";
+    card.innerHTML = `
+      <div class="card h-100 shadow-sm">
+        <img src="${track.album.images[0]?.url}" class="card-img-top" alt="${track.name}">
+        <div class="card-body">
+          <h5 class="card-title">${track.name}</h5>
+          <p class="card-text"><strong>Artista:</strong> ${track.artists[0]?.name}</p>
+          <a href="${track.external_urls.spotify}" target="_blank" class="btn btn-success">Escuchar</a>
+        </div>
+      </div>
+    `;
+    contenedor.appendChild(card);
+  });
+}
+
+// ======================
+// FUNCIÓN PRINCIPAL
+// ======================
+window.onload = async function () {
+  const token = await obtenerTokenSpotify();
+  if (!token) return;
+
+  try {
+    const response = await fetch('https://api.spotify.com/v1/search?q=music&type=track&limit=6', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+    mostrarTracks(data.tracks.items);
+  } catch (error) {
+    console.error('Error al obtener datos de Spotify:', error);
+    document.getElementById("contenedor-cards").innerHTML = `<p class="text-danger">Error al cargar los datos de música.</p>`;
+  }
+};
