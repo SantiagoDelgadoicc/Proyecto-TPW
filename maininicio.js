@@ -102,15 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ======================
-// CONFIGURACIÓN SPOTIFY
-// ======================
+// client id y secret//
 const clientId = 'cfd9931c98d0476aaf63ae8c3b259099';
 const clientSecret = 'd559fb37c39e4d3dad2bfe0470643e36';
 
-// ======================
-// FUNCIÓN PARA OBTENER TOKEN
-// ======================
+//funion para token//
 async function obtenerTokenSpotify() {
   const credenciales = btoa(`${clientId}:${clientSecret}`);
 
@@ -132,23 +128,28 @@ async function obtenerTokenSpotify() {
   }
 }
 
-// ======================
-// MOSTRAR TRACKS EN EL DOM
-// ======================
+//cartas funcion//
 function mostrarTracks(tracks) {
   const contenedor = document.getElementById("contenedor-cards");
   contenedor.innerHTML = "";
 
   tracks.forEach(track => {
+    const duracionMs = track.duration_ms;
+    const minutos = Math.floor(duracionMs / 60000);
+    const segundos = Math.floor((duracionMs % 60000) / 1000).toString().padStart(2, '0');
+    const duracionFormateada = `${minutos}:${segundos}`;
+
     const card = document.createElement("div");
-    card.className = "col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex";
+    card.className = "col-12 col-sm-6 col-md-4 mb-4 d-flex";
     card.innerHTML = `
-      <div class="card h-100 shadow-sm">
-        <img src="${track.album.images[0]?.url}" class="card-img-top" alt="${track.name}">
-        <div class="card-body">
-          <h5 class="card-title">${track.name}</h5>
-          <p class="card-text"><strong>Artista:</strong> ${track.artists[0]?.name}</p>
-          <a href="${track.external_urls.spotify}" target="_blank" class="btn btn-success">Escuchar</a>
+      <div class="card card-custom shadow-sm w-100" data-bs-theme="dark">
+        <img src="${track.album.images[0]?.url}" alt="${track.name}" class="card-img-top">
+        <div class="card-body card-body-custom d-flex flex-column">
+          <h5 class="card-title text-truncate" title="${track.name}">${track.name}</h5>
+          <p class="card-text mb-1"><strong>Artista:</strong> ${track.artists[0]?.name}</p>
+          <p class="card-text mb-1"><strong>Álbum:</strong> ${track.album.name}</p>
+          <p class="card-text mb-2"><strong>Duración:</strong> ${duracionFormateada}</p>
+          <a href="${track.external_urls.spotify}" target="_blank" class="btn btn-success mt-auto">Escuchar</a>
         </div>
       </div>
     `;
@@ -156,9 +157,7 @@ function mostrarTracks(tracks) {
   });
 }
 
-// ======================
-// FUNCIÓN PRINCIPAL
-// ======================
+///spotify///
 window.onload = async function () {
   const token = await obtenerTokenSpotify();
   if (!token) return;
@@ -177,3 +176,26 @@ window.onload = async function () {
     document.getElementById("contenedor-cards").innerHTML = `<p class="text-danger">Error al cargar los datos de música.</p>`;
   }
 };
+
+fetch('datos.json')
+  .then(response => {
+    if (!response.ok) throw new Error("Error al cargar el archivo JSON");
+    return response.json();
+  })
+  .then(data => {
+    const tabla = document.getElementById("tabla-datos");
+    data.forEach(item => {
+      tabla.innerHTML += `
+        <tr>
+          <td>${item.nombre}</td>
+          <td>${item.año}</td>
+          <td>${item.oyentes}</td>
+          <td>${item.discos}</td>
+          <td>${item.cancion}</td>
+        </tr>
+      `;
+    });
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });

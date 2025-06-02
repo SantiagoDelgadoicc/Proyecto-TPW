@@ -2,11 +2,64 @@
   {
     "nombre": "Nirvana",
     "año": "1987-1994",
-    "oyentes": "32.882.067"
+    "oyentes": "32.882.067",
+    "discos": "Nevermind, In Utero, Bleach",
+    "cancion": "Smells Like Teen Spirit, Come As You Are, Lithium, Heart-Shaped Box, All Apologies"
   },
   {
     "nombre": "David Bowie",
     "año": "1962-2016",
-    "oyentes": "15.538.749"
+    "oyentes": "15.538.749",
+    "discos": "Station to Station, The Rise and Fall of Ziggy Stardust and the Spiders from Mars, Hunky Dory, Heroes, Let's Dance",
+    "cancion": "Space Oddity, Starman, Heroes, Let's Dance, Changes"
+  },
+  {
+    "nombre": "Queen",
+    "año": "1970-1991",
+    "oyentes": "30.000.000",
+    "discos": "A Night at the Opera, The Game, News of the World, Innuendo, The Miracle",
+    "cancion": "Bohemian Rhapsody, We Will Rock You, We Are the Champions, Another One Bites the Dust, Don't Stop Me Now"
+  },
+  {
+    "nombre": "The Beatles",
+    "año": "1960-1970",
+    "oyentes": "20.000.000",
+    "discos": "Abbey Road, Sgt. Pepper's Lonely Hearts Club Band, The Beatles (White Album), Revolver, Rubber Soul",
+    "cancion": "Hey Jude, Let It Be, Yesterday, Come Together, Here Comes the Sun"
+  },
+  {
+    "nombre": "Led Zeppelin",
+    "año": "1968-1980",
+    "oyentes": "10.000.000",
+    "discos": "Led Zeppelin IV, Physical Graffiti, Houses of the Holy, Led Zeppelin II, Led Zeppelin III",
+    "cancion": "Stairway to Heaven, Whole Lotta Love, Kashmir"
+  },
+  {
+    "nombre": "Pink Floyd",
+    "año": "1965-1994",
+    "oyentes": "25.000.000",
+    "discos": "The Dark Side of the Moon, The Wall, Wish You Were Here, Animals, Meddle",
+    "cancion": "Comfortably Numb, Wish You Were Here, Another Brick in the Wall, Time, Money"
+  },
+  {
+    "nombre": "The Rolling Stones",
+    "año": "1962-presente",
+    "oyentes": "15.000.000",
+    "discos": "Sticky Fingers, Exile on Main St., Let It Bleed, Some",
+    "cancion": "Paint It Black, Sympathy for the Devil, Gimme Shelter, (I Can't Get No) Satisfaction, Start Me Up"
+  },
+  {
+    "nombre": "AC/DC",
+    "año": "1973-presente",
+    "oyentes": "12.000.000",
+    "discos": "Back in Black, Highway to Hell, Let There Be Rock, Powerage, For Those About to Rock We Salute You",
+    "cancion": "Back in Black, Highway to Hell, Thunderstruck, You Shook Me All Night Long, T.N.T."
+  },
+  {
+    "nombre": "Metallica",
+    "año": "1981-presente",
+    "oyentes": "20.000.000",
+    "discos": "Master of Puppets, The Black Album, Ride the Lightning, And Justice for All, Kill 'Em All",
+    "cancion": "Enter Sandman, Nothing Else Matters, Master of Puppets, The Unforgiven, One"
   }
 ]
