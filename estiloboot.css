@@ -31,12 +31,18 @@
 }
 
 .card-body-custom {
+  min-height: 100px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .card:hover {
   transform: scale(1.02);
@@ -121,7 +127,7 @@ h1 {
 .gridgeneral {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 200px 300px 10px 850px 850px 1px 700px 100px;
+  grid-template-rows: 200px 300px 10px 850px 850px 50px 500px 700px 100px;
   border: 1px solid rgb(0, 0, 0);
   margin: 20px auto;
   padding: 10px;
@@ -183,7 +189,7 @@ h1 {
 
 .contenidogrid {
   grid-column: 1/6;
-  grid-row: 7;
+  grid-row: 8;
   align-content: center;
   align-items: center;
   justify-self: center;
@@ -191,76 +197,47 @@ h1 {
 
 .footergrid {
   grid-column: 1/6;
-  grid-row: 8;
-  align-content: center;
-  align-items: center;
-  justify-self: center;
-}
-
-.gridcontacto {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 200px 300px 40px 380px 40px 100px 50px 100px 100px;
-  border: 1px solid rgb(0, 0, 0);
-  margin: 20px auto;
-  padding: 10px;
-  gap: 10px;
-  align-items: center;
-}
-
-.contactogrid1 {
-  grid-column: 3/5;
-  grid-row: 3;
-  align-content: start;
-  align-items: start;
-  justify-self: start;
-}
-
-.contactogrid {
-  grid-column: 3/5;
-  grid-row: 4;
-  align-content: start;
-  align-items: start;
-  justify-self: start;
-}
-
-.contactogrid2 {
-  grid-column: 3/5;
-  grid-row: 5;
-  align-content: start;
-  align-items: start;
-  justify-self: start;
-}
-
-.contactogrid3 {
-  grid-column: 3/5;
-  grid-row: 6;
-  align-content: start;
-  align-items: start;
-  justify-self: start;
-}
-
-.contactogrid4 {
-  grid-column: 3/5;
-  grid-row: 8;
-  align-content: start;
-  align-items: start;
-  justify-self: start;
-}
-
-.contactogrid5 {
-  grid-column: 3/5;
-  grid-row: 7;
-  align-content: start;
-  align-items: start;
-  justify-self: start;
-}
-
-.footergridc {
-  grid-column: 1/7;
   grid-row: 9;
   align-content: center;
   align-items: center;
   justify-self: center;
 }
 
+.footergridc {
+  grid-column: 1/7;
+  grid-row: 10;
+  align-content: center;
+  align-items: center;
+  justify-self: center;
+}
+
+.cardsola{
+  grid-column: 4/9;
+  grid-row: 1;
+  justify-self: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.seccion{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 400px;
+  gap: 10px;
+  margin: 20px;
+}
+
+.generar{
+  grid-column: 1/6;
+  grid-row: 7;
+  align-items: center;
+  justify-self: center;
+}
+
+.boton{
+  grid-column: 3;
+  grid-row: 6;
+  align-self: center;
+  justify-self: center;
+
+}

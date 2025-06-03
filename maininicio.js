@@ -199,3 +199,86 @@ fetch('datos.json')
   .catch(error => {
     console.error("Error:", error);
   });
+//tarea 2
+function mostrarcancion(tracks) {
+  const contenedor = document.getElementById("contenedor-cancion");
+  contenedor.innerHTML = "";
+
+  tracks.forEach(track => {
+    const duracionMs = track.duration_ms;
+    const minutos = Math.floor(duracionMs / 60000);
+    const segundos = Math.floor((duracionMs % 60000) / 1000).toString().padStart(2, '0');
+    const duracionFormateada = `${minutos}:${segundos}`;
+
+    const card = document.createElement("div");
+    card.className = "col-12 col-sm-6 col-md-4 mb-4 d-flex";
+    card.innerHTML = `
+      <div class="card card-custom shadow-sm w-100" data-bs-theme="dark">
+        <img src="${track.album.images[0]?.url}" alt="${track.name}" class="card-img-top">
+        <div class="card-body card-body-custom d-flex flex-column">
+          <h5 class="card-title text-truncate" title="${track.name}">${track.name}</h5>
+          <p class="card-text mb-1"><strong>Artista:</strong> ${track.artists[0]?.name}</p>
+          <p class="card-text mb-1"><strong>Álbum:</strong> ${track.album.name}</p>
+          <p class="card-text mb-2"><strong>Duración:</strong> ${duracionFormateada}</p>
+          <a href="${track.external_urls.spotify}" target="_blank" class="btn btn-success mt-auto">Escuchar</a>
+        </div>
+      </div>
+    `;
+    contenedor.appendChild(card);
+  });
+}
+//pedirle cancion
+async function cancionaleatoria() {
+  const query = 'misfits'; 
+  const num = Math.floor(Math.random() * 1000);
+  const token = await obtenerTokenSpotify();
+  if (!token) return;
+  try{
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=1&offset=${num}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+    }
+  });
+  
+  const data = await response.json();
+  mostrarcancion(data.tracks.items);
+  }catch (error) {
+    console.error('Error al obtener datos de Spotify:', error);
+    document.getElementById("contenedor-cards").innerHTML = `<p class="text-danger">Error al cargar los datos de música.</p>`;
+  }
+}
+//boton generar
+document.addEventListener("DOMContentLoaded", function () {
+const aleatoria = document.getElementById("aleatoria");
+  aleatoria.addEventListener("click", function (e) {
+    e.preventDefault();
+    cancionaleatoria();
+  });
+});
+//funcion carta
+function mostrarcancion(tracks) {
+  const contenedor = document.getElementById("contenedor-cancion");
+  contenedor.innerHTML = "";
+  tracks.forEach(track => {
+    const duracionMs = track.duration_ms;
+    const minutos = Math.floor(duracionMs / 60000);
+    const segundos = Math.floor((duracionMs % 60000) / 1000).toString().padStart(2, '0');
+    const duracionFormateada = `${minutos}:${segundos}`;
+
+    const card = document.createElement("div");
+    card.className = "col-12 col-sm-6 col-md-4 mb-4 d-flex h-100";
+    card.innerHTML = `
+      <div class="card cardt-custom shadow-sm w-100 h-100 d-flex flex-column" data-bs-theme="dark">
+        <img src="${track.album.images[0]?.url}" alt="${track.name}" class="card-img-top">
+        <div class="card-body card-body-custom d-flex flex-column">
+          <h5 class="card-title text-truncate" title="${track.name}">${track.name}</h5>
+          <p class="card-text mb-1"><strong>Artista:</strong> ${track.artists[0]?.name}</p>
+          <p class="card-text mb-1"><strong>Álbum:</strong> ${track.album.name}</p>
+          <p class="card-text mb-2"><strong>Duración:</strong> ${duracionFormateada}</p>
+          <a href="${track.external_urls.spotify}" target="_blank" class="btn btn-success mt-auto">Escuchar</a>
+        </div>
+      </div>
+    `;
+    contenedor.appendChild(card);
+  });
+}
